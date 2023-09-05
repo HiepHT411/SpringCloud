@@ -1,0 +1,20 @@
+Currency Exchange Service
+http://localhost:8000/currency-exchange/from/USD/to/VND
+
+Currency Conversion Service 
+http://localhost:8100/currency-conversion/from/USD/to/VND/quantity/10
+http://localhost:8100/currency-conversion-feign/from/USD/to/VND/quantity/10
+
+Eureka
+http://localhost:8761
+
+Api Gateway
+http://localhost:8765/CURRENCY-EXCHANGE/currency-exchange/from/USD/to/VND
+http://localhost:8765/CURRENCY-CONVERSION/currency-conversion/from/USD/to/VND/quantity/10
+http://localhost:8765/CURRENCY-CONVERSION/currency-conversion-feign/from/USD/to/VND/quantity/10
+(neu muon khong phai viet hoa, them spring.cloud.gateway.discovery.locator.lowerCaseServiceId=true vao api-gateway properties
+
+//Sau khi config route
+http://localhost:8765/currency-exchange/from/USD/to/VND
+http://localhost:8765/currency-conversion/from/USD/to/VND/quantity/10
+http://localhost:8765/currency-conversion-feign/from/USD/to/VND/quantity/10
