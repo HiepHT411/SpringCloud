@@ -12,6 +12,9 @@ services:
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
       SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_ZIPKIN_SENDER_TYPE: rabbit
 
   currency-conversion:
     image: 48885/udemy-microservice-currency-conversion-service:0.0.1-SNAPSHOT
@@ -24,6 +27,9 @@ services:
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
       SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_ZIPKIN_SENDER_TYPE: rabbit
 
   api-gateway:
     image: 48885/udemy-microservice-api-gateway:0.0.1-SNAPSHOT
@@ -36,11 +42,21 @@ services:
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
       SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_ZIPKIN_SENDER_TYPE: rabbit
 
   naming-server:
     image: 48885/udemy-microservice-naming-server:0.0.1-SNAPSHOT
     ports:
       - "8761:8761"
+    networks:
+      currency-network:
+
+  spring-cloud-config-server:
+    image: 48885/udemy-microservice-spring-cloud-config-server:0.0.1-SNAPSHOT
+    ports:
+      - "8888:8888"
     networks:
       currency-network:
 
@@ -56,6 +72,14 @@ services:
     depends_on:
       - rabbitmq
     restart: always #Restart if there is a problem starting up
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - currency-network
 
 networks:
   currency-network:
