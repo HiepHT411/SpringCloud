@@ -21,7 +21,7 @@
       <module name="currency-conversion-service" target="11" />
       <module name="currency-exchange-service" target="11" />
       <module name="limits-service" target="10" />
-      <module name="naming-server" target="10" />
+      <module name="naming-server" target="11" />
       <module name="restful-web-services" target="11" />
       <module name="spring-cloud-config-server" target="10" />
     </bytecodeTargetLevel>

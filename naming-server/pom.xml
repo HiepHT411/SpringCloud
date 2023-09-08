@@ -14,7 +14,7 @@
 	<name>naming-server</name>
 	<description>Naming server for microservices load balancing</description>
 	<properties>
-		<java.version>10</java.version>
+		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
 	</properties>
 	<dependencies>
@@ -56,6 +56,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>48885/udemy-microservice-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

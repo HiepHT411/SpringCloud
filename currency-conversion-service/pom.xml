@@ -54,20 +54,20 @@
 		</dependency>
 		
 		<!-- Zipkin distributed tracing, them id cho moi request -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-sleuth</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.amqp</groupId>
-			<artifactId>spring-rabbit</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--		</dependency>-->
+<!--		-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
+<!--		</dependency>-->
+<!--		-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.amqp</groupId>-->
+<!--			<artifactId>spring-rabbit</artifactId>-->
+<!--		</dependency>-->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -99,6 +99,10 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<image>
+						<name>48885/udemy-microservice-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>
 			</plugin>
 		</plugins>
